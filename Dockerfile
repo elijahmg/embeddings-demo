@@ -12,6 +12,15 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV="production"
 
+# Environment variables for secrets (set via Fly.io secrets or build args)
+ARG BUN_PUBLIC_AI_TOKEN
+ARG BUN_PUBLIC_DB_API_KEY
+ARG BUN_PUBLIC_DB_URL
+
+ENV BUN_PUBLIC_AI_TOKEN=${BUN_PUBLIC_AI_TOKEN}
+ENV BUN_PUBLIC_DB_API_KEY=${BUN_PUBLIC_DB_API_KEY}
+ENV BUN_PUBLIC_DB_URL=${BUN_PUBLIC_DB_URL}
+
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build

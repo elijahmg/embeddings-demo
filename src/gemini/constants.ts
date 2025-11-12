@@ -1,3 +1,9 @@
 import { GoogleGenAI } from '@google/genai'
 
-export const GemAI = new GoogleGenAI({ apiKey: process.env.BUN_PUBLIC_AI_TOKEN });
+const apiKey = process.env.BUN_PUBLIC_AI_TOKEN;
+
+if (!apiKey) {
+  throw new Error('Missing required environment variable: BUN_PUBLIC_AI_TOKEN');
+}
+
+export const GemAI = new GoogleGenAI({ apiKey });
